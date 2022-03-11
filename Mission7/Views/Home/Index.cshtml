@@ -1,0 +1,16 @@
+﻿@{
+}
+@model BooksViewModel
+
+<h1>Welcome to the Bookstore!</h1>
+
+
+<div>
+    @foreach (Book b in Model.Books)
+    {
+        <partial name="BookSummary" model="b" />
+    }
+</div>
+
+
+<div page-numbers="@Model.PageInfo" page-action="Index" page-class="btn"></div>

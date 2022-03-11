@@ -1,0 +1,46 @@
+﻿@{
+}
+@model Book
+
+@*Here I used bootstrap to make the heading of the card have a dark background and white text.*@
+<div class="card text-white bg-dark" style="margin:10px;">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <h2>@Model.Title by: @Model.Author</h2>
+            </div>
+            <div class="col-3">
+                <h2 class="text-sm-right">@Model.Price.ToString("c")</h2>
+                
+            </div>
+            <div class="col-1">
+                <form method="post" asp-page="/Purchase">
+                    <input type="hidden" asp-for="@Model.BookId" />
+                    <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+
+                    <span class="card-text float-end">
+                        @*Here I used bootstrap to make the button have a light color.*@
+                        <button type="submit" class="btn btn-light btn-lg">Purchase</button>
+                    </span>
+                </form>
+            </div>
+        </div>
+        
+        
+    </div>
+
+    @*Here I used bootstrap to make the body of the card have a light background and black text*@
+
+    <div class="card-body bg-light text-black">
+        @*Here I used bootstrap to make a list group to display information on each book*@
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Publisher: @Model.Publisher</li>
+            <li class="list-group-item">Classification: @Model.Classification</li>
+            <li class="list-group-item">Category: @Model.Category</li>
+            <li class="list-group-item">Page Count: @Model.PageCount</li>
+            <li class="list-group-item">ISBN: @Model.Isbn</li>
+        </ul>
+        
+
+    </div>
+</div>
